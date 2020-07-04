@@ -8,25 +8,6 @@ import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends Component {
     state = {
-        orderForm: {
-            name: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Your Name',
-                },
-                value: ''
-            },
-            street: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Street',
-                }
-            },
-            
-        }, 
-
         name: '',
         email: '',
         address: {
@@ -64,7 +45,6 @@ class ContactData extends Component {
     }
 
     render () {
-//        const formElementArray
         let form = (
             <form>
                 <Input inputType="input" type="text" name="name" placeholder="Your Name" />
