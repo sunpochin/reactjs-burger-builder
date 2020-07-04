@@ -7,6 +7,24 @@ import axios from '../../../axios-orders';
 
 class ContactData extends Component {
     state = {
+        orderForm: {
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Name',
+                },
+                value: ''
+            },
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Street',
+                }
+            },
+        }, 
+
         name: '',
         email: '',
         address: {
@@ -44,6 +62,7 @@ class ContactData extends Component {
     }
 
     render () {
+        const formElementArray
         let form = (
             <form>
                 <input className={classes.Input} type="text" name="name" placeholder="Your Name" />
