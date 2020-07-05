@@ -25,12 +25,14 @@ const input = (props) => {
                     className={classes.InputElement} 
                     {...props.elementConfig} 
                     value={props.value}
-                    onChange={props.changed}>
+                    onChange={props.changed}
+                    >
                     {props.elementConfig.options.map(option => (
-                        <option key value={option.value}>
+                        <option key ={option.value}>
                             {option.displayValue}
                         </option>
-                    ))}
+                    ))
+                    }
                 </select>
             );
             break;
