@@ -28,6 +28,7 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Street',
                 },
+                value: '',
                 validation: {
                     required: true,
                 },
@@ -84,12 +85,11 @@ class ContactData extends Component {
                     ]
                 },
                 value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
+                validation: {},
+                valid: true,
             },
         },
+        formIsValid: false,
         loading: false,
     }
 
@@ -146,7 +146,12 @@ class ContactData extends Component {
         updatedFormElement.touched = true;
         updateOrderForm[inputIdentifier] = updatedFormElement;
         console.log(updatedFormElement);
-        this.setState({orderForm: updateOrderForm});
+
+        let formIsValid = true;
+        for (let identifiers in updateOrderForm) {
+            formIsValid = updateOrderForm[identifiers].valid && formIsValid;
+        }
+        this.setState({orderForm: updateOrderForm, formIsValid: formIsValid} );
     }
 
     render () {
@@ -172,7 +177,7 @@ class ContactData extends Component {
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id) } />
                 ) )}
-                <Button btnType="Success" 
+                <Button btnType="Success" disabled={!this.state.formIsValid}
                     clicked={this.orderHandler}>ORDER</Button>
             </form>
         );
